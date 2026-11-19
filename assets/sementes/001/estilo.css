@@ -71,32 +71,8 @@ h1 em { letter-spacing: -.085em; }
 .hero-actions { grid-column: 1; align-self: end; margin-top: 24px; display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; }
 .begin { min-height: 46px; display: inline-flex; align-items: center; gap: 18px; padding: 9px 14px; border: 1px solid var(--ink); background: var(--ink); color: var(--paper); text-decoration: none; font: bold .78rem/1.25 var(--sans); }
 .begin:hover { color: var(--ink); background: var(--paper); }
-.begin > span:last-child { font-size: 1rem; }
-.touch-label, .enhanced .read-label { display: none; }
-.enhanced .touch-label { display: inline; }
 .read-time { font-size: .65rem; color: var(--soft); }
 .ink-bridge { width: 100%; height: 10px; background: var(--ink); clip-path: polygon(0 42%, 7% 54%, 14% 28%, 23% 40%, 30% 21%, 38% 51%, 45% 38%, 51% 76%, 59% 29%, 68% 48%, 76% 31%, 84% 67%, 92% 37%, 100% 46%, 100% 66%, 92% 57%, 84% 82%, 76% 46%, 68% 67%, 59% 44%, 51% 86%, 45% 54%, 38% 65%, 30% 40%, 23% 57%, 14% 47%, 7% 71%, 0 63%); }
-.ink-dive { position: fixed; inset: 0; pointer-events: none; z-index: 7; overflow: hidden; visibility: hidden; background: transparent; }
-.ink-dive[data-stage] { visibility: visible; }
-.dive-piece { position: absolute; left: var(--left); top: var(--top); width: var(--width); height: auto; max-width: none; transform: translate(-50%, -50%); }
-.ink-dive[data-stage="enter"] .dive-piece { animation: ink-enter .82s cubic-bezier(.5,.02,.73,.38) both; }
-.ink-dive[data-stage="enter"] { animation: ink-bed .82s linear both; }
-.ink-dive[data-stage="exit"] { background: var(--night); animation: ink-exit .42s ease-out both; }
-.ink-dive[data-stage="exit"] .dive-piece { display: none; }
-@keyframes ink-enter {
-  0% { transform: translate(-50%, -50%) scale(1); }
-  70% { transform: translate(-58%, -48%) scale(7) rotate(-7deg); }
-  100% { transform: translate(-52%, -53%) scale(34) rotate(-11deg); }
-}
-@keyframes ink-bed {
-  0%, 80% { background: transparent; }
-  100% { background: var(--night); }
-}
-@keyframes ink-exit {
-  from { clip-path: inset(0); }
-  to { clip-path: inset(100% 0 0); }
-}
-
 .scene { padding-block: clamp(54px, 10vw, 120px); }
 .scene h2 { margin: .22em 0 .37em; font-size: clamp(2.35rem, 6vw, 5.15rem); line-height: .99; letter-spacing: -.065em; }
 .standfirst { font-size: clamp(1.16rem, 2.3vw, 1.46rem); line-height: 1.43; max-width: 46ch; }
@@ -230,13 +206,155 @@ details p, details ul { margin-bottom: 8px; }
   .two-questions > div + div { border: 0; border-top: 1px solid var(--line); padding-inline-start: 0; }
 }
 
-.reduced-motion .pen-trace, .reduced-motion .ink-dive { display: none; }
+.reduced-motion .pen-trace { display: none; }
 .reduced-motion .plate-part { transform: none; }
 .reduced-motion .seed-star { display: none !important; }
 .reduced-motion .seed-shape, .reduced-motion .seed-cut { animation: none !important; }
 .reduced-motion .crossed[open] :is(blockquote, p) { animation: none; }
 @media (prefers-reduced-motion: reduce) {
-  .ink-dive, .pen-trace, .seed-star { display: none !important; }
+  .pen-trace, .seed-star { display: none !important; }
   .plate-part { transform: none !important; }
   .seed-shape, .seed-cut { animation: none !important; }
+}
+
+/* The print opens into a chart. All three ink cuts share the same scroll. */
+:root {
+  --night: #151714;
+  --starlight: #f0e5ca;
+  --copper: #a07548;
+  --archive-paper: #ebe1d0;
+}
+
+.cosmic-passage, .paper-passage { display: none; }
+.has-motion .cosmic-passage { display: block; height: 146svh; background: var(--night); }
+.cosmic-stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: clip;
+  isolation: isolate;
+  background: var(--night);
+}
+.cosmic-stage > div { position: absolute; inset: 0; pointer-events: none; }
+.cosmic-paper {
+  background: var(--paper);
+  opacity: var(--paper-opacity, 1);
+}
+.cosmic-field {
+  background:
+    radial-gradient(ellipse at 54% 51%, #785e3f55, transparent 57%),
+    radial-gradient(circle at 19% 29%, #b09768 1px, transparent 2px) 0 0 / 83px 127px,
+    radial-gradient(circle at 63% 67%, #947f59 1px, transparent 2px) 9px 3px / 131px 97px;
+  opacity: var(--field-opacity, 0);
+  transform: translate3d(0, var(--field-y, 0), 0);
+}
+.cosmic-stage > .cosmic-field { inset: -3%; }
+.cosmic-chart {
+  display: grid;
+  place-items: center;
+  color: #bc9d65;
+  opacity: var(--chart-opacity, 0);
+  transform: translate3d(0, var(--chart-y, 0), 0) rotate(var(--chart-angle, 0deg));
+}
+.cosmic-chart svg {
+  width: min(100%, 590px);
+  stroke: currentColor;
+  stroke-width: .75;
+  stroke-dasharray: 2 5;
+}
+.cosmic-chart .chart-ticks { stroke-width: 1.2; stroke-dasharray: none; }
+.cosmic-camera { mix-blend-mode: difference; }
+.cosmic-camera img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: none;
+  height: auto;
+  filter: invert(1);
+  transform: translate3d(var(--cut-x), var(--cut-y), 0) scale(var(--cut-scale));
+}
+.cosmic-far {
+  width: clamp(66px, 16vw, 165px);
+  opacity: var(--outer-opacity, 1);
+  --cut-x: var(--far-x, -111%); --cut-y: var(--far-y, -150%); --cut-scale: 1;
+}
+.cosmic-mid {
+  width: clamp(102px, 24vw, 238px);
+  opacity: var(--outer-opacity, 1);
+  --cut-x: var(--mid-x, 0%); --cut-y: var(--mid-y, -75%); --cut-scale: 1;
+}
+.cosmic-near {
+  width: clamp(160px, 39vw, 390px);
+  opacity: var(--near-opacity, 1);
+  --cut-x: -50%; --cut-y: -50%; --cut-scale: var(--near-scale, .75);
+}
+.has-motion .universe::before, .has-motion .universe::after { display: none; }
+.universe { background: var(--night); }
+.universe-head { max-width: 860px; }
+.universe-title .year { color: #c7a373; }
+.sky {
+  background: radial-gradient(ellipse at 50% 45%, #343024, #191a15 68%);
+  border-color: #85714c;
+}
+.map .origin-ring { stroke: #d4ab6e; }
+.map .links line { stroke: #c7a373; }
+.atlas-controls { font-variant-numeric: tabular-nums; }
+.begin { font-size: .88rem; }
+.hero-art, .plate-layers { transition: opacity .24s ease-out; }
+.plate-layers { display: block; opacity: 0; }
+.layers-ready .plate-layers { opacity: 1; }
+
+.has-motion .paper-passage {
+  position: relative;
+  display: block;
+  height: clamp(180px, 43svh, 420px);
+  overflow: clip;
+  background: var(--night);
+  perspective: 800px;
+}
+.paper-leaf {
+  position: absolute;
+  inset: 0 -6% -2px;
+  background: var(--archive-paper);
+  transform-origin: center bottom;
+  transform: rotateX(var(--leaf-angle, 70deg));
+  clip-path: polygon(0 5%, 11% 4%, 24% 6%, 41% 2%, 55% 3%, 72% 0, 87% 4%, 100% 2%, 100% 100%, 0 100%);
+  overflow: hidden;
+}
+.paper-impression, .paper-rules { position: absolute; inset: 0; }
+.paper-impression {
+  background: url("mancha-3.webp") center 42% / min(66vw, 450px) auto no-repeat;
+  mix-blend-mode: multiply;
+  opacity: var(--impression-opacity, .5);
+  transform: translate3d(0, var(--impression-y, 0), 0) scale(var(--impression-scale, .8));
+}
+.paper-rules {
+  background: repeating-linear-gradient(to bottom, transparent 0 23px, #725a3d28 23px 24px);
+  mask-image: linear-gradient(transparent, black 29%, black 63%, transparent);
+  opacity: var(--rules-opacity, 0);
+}
+.archive { background: var(--archive-paper); }
+.document-sheet {
+  background: linear-gradient(90deg, #dbccb348, transparent 6%, transparent 95%, #dbccb344), #f8f0df;
+  box-shadow: 2px 7px 0 -3px #d9cab2;
+}
+.document-sheet header { border-color: var(--copper); }
+.crossed del {
+  position: relative;
+  text-decoration: none;
+}
+.crossed del::after {
+  content: "";
+  position: absolute;
+  inset: 43% -4px auto;
+  height: 4px;
+  background: #775341;
+  clip-path: polygon(0 30%, 14% 57%, 33% 23%, 49% 56%, 71% 10%, 100% 58%, 98% 82%, 64% 59%, 39% 100%, 17% 72%, 2% 100%);
+  transform: rotate(-3deg) scaleX(var(--strike, 1));
+  transform-origin: left;
+}
+.reduced-motion :is(.hero-art, .plate-layers) { transition: none; }
+@media (prefers-reduced-motion: reduce) {
+  .has-motion :is(.cosmic-passage, .paper-passage) { display: none; }
+  .hero-art, .plate-layers { transition: none; }
 }

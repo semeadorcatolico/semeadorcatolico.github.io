@@ -13,14 +13,21 @@
     motionToggle.textContent = motion.matches ? "Movimento reduzido" :
       quiet ? "Restaurar movimento" : "Reduzir movimento";
     motionToggle.disabled = motion.matches;
-    if (reduced) endDive();
+    root.classList.toggle("has-motion", !reduced);
+    plate.classList.toggle("layers-ready", !reduced && islandLayers.length > 0);
+    if (!reduced) scheduleScenes();
   }
 
   const plate = document.querySelector(".plate-link");
   const original = plate.querySelector(".hero-art");
   const layers = plate.querySelector(".plate-layers");
-  const dive = document.querySelector(".ink-dive");
-  const target = document.getElementById("lemaitre");
+  const cosmic = document.querySelector(".cosmic-passage");
+  const cosmicStage = cosmic.firstElementChild;
+  const paper = document.querySelector(".paper-passage");
+  const crossed = document.querySelector(".crossed");
+  const motionScenes = [plate, cosmic, paper, crossed];
+  const visibleScenes = new Set(motionScenes);
+  const lastProgress = new Map();
   const plateAssets = new URL(".", original.src);
   const regions = [
     [697, 48, 282, 153],
@@ -29,7 +36,6 @@
   ];
   let islandLayers = [];
   let framePending = false;
-  let diveTimeout = 0;
 
   function layer(name, className) {
     const image = new Image();
@@ -56,92 +62,120 @@
       islandLayers = islands;
       layers.append(body, ...islands);
       if (!root.classList.contains("reduced-motion")) plate.classList.add("layers-ready");
-      updatePlate();
+      lastProgress.delete(plate);
+      scheduleScenes();
     }).catch(() => {
       // The original stays visible if a layer is unavailable.
     });
   }
 
-  function updatePlate() {
-    framePending = false;
-    if (!islandLayers.length || root.classList.contains("reduced-motion")) return;
-    const box = plate.getBoundingClientRect();
-    if (box.bottom < -32 || box.top > window.innerHeight) return;
-    const progress = Math.max(0, Math.min(1, (window.scrollY - 15) / Math.max(270, box.height)));
-    const paths = [[-12, -36, .22], [18, -22, .3], [26, -8, .74]];
+  function ease(progress, start, end) {
+    const t = Math.max(0, Math.min(1, (progress - start) / (end - start)));
+    return t * t * (3 - 2 * t);
+  }
+
+  function setStyles(element, values) {
+    Object.entries(values).forEach(([property, value]) => {
+      element.style.setProperty("--" + property, value);
+    });
+  }
+
+  function paintPlate(progress) {
+    const paths = [[-12, -30, .09], [9, -17, .13], [14, -5, .24]];
     islandLayers.forEach((image, index) => {
       const [dx, dy, scale] = paths[index];
-      image.style.setProperty("--x", (dx * progress) + "px");
-      image.style.setProperty("--y", (dy * progress) + "px");
-      image.style.setProperty("--s", 1 + scale * progress);
+      setStyles(image, {x: dx * progress + "px", y: dy * progress + "px", s: 1 + scale * progress});
     });
-    plate.style.setProperty("--dash", Math.round(200 * (1 - progress)));
+    setStyles(plate, {dash: 200 * (1 - progress)});
   }
 
-  function schedulePlate() {
-    if (!framePending && !root.classList.contains("reduced-motion")) {
-      framePending = true;
-      requestAnimationFrame(updatePlate);
+  function paintCosmos(progress) {
+    const camera = ease(progress, .04, .91);
+    const light = ease(progress, .20, .79);
+    setStyles(cosmicStage, {
+      "paper-opacity": 1 - light,
+      "field-opacity": ease(progress, .32, .82),
+      "field-y": -22 * camera + "px",
+      "chart-opacity": .57 * ease(progress, .39, .78),
+      "chart-y": 25 * (1 - camera) + "px",
+      "chart-angle": -13 * (1 - camera) + "deg",
+      "far-x": -111 - 135 * camera + "%",
+      "far-y": -150 - 92 * camera + "%",
+      "mid-x": 147 * camera + "%",
+      "mid-y": -75 - 42 * camera + "%",
+      "outer-opacity": 1 - .82 * ease(progress, .50, 1),
+      "near-scale": .75 + 2.8 * camera,
+      "near-opacity": 1 - .88 * ease(progress, .58, 1),
+    });
+  }
+
+  function paintPaper(progress) {
+    const fold = ease(progress, .04, .94);
+    setStyles(paper, {
+      "leaf-angle": 70 * (1 - fold) + "deg",
+      "impression-opacity": .55 * (1 - ease(progress, .17, .86)),
+      "impression-y": 85 * fold + "px",
+      "impression-scale": .8 + .8 * fold,
+      "rules-opacity": .8 * ease(progress, .28, .72),
+    });
+  }
+
+  function updateScenes() {
+    framePending = false;
+    if (!root.classList.contains("has-motion")) return;
+    const viewport = document.documentElement.clientHeight;
+    const updates = [];
+    for (const scene of visibleScenes) {
+      const box = scene.getBoundingClientRect();
+      let progress = ease(viewport * .88 - box.top, 0, viewport * .53);
+      if (scene === cosmic) {
+        progress = ease(viewport * .53 - box.top, 0, viewport * .53 + box.height - cosmicStage.offsetHeight);
+      } else if (scene === plate) {
+        progress = ease(window.scrollY, 0, Math.max(220, box.height));
+      }
+      if (lastProgress.get(scene) === progress) continue;
+      lastProgress.set(scene, progress);
+      updates.push([scene, progress]);
+    }
+    for (const [scene, progress] of updates) {
+      if (scene === plate) paintPlate(progress);
+      else if (scene === cosmic) paintCosmos(progress);
+      else if (scene === paper) paintPaper(progress);
+      else setStyles(crossed, {strike: ease(progress, .05, .85)});
     }
   }
 
-  function endDive() {
-    window.clearTimeout(diveTimeout);
-    diveTimeout = 0;
-    delete dive.dataset.stage;
-    dive.replaceChildren();
+  function scheduleScenes() {
+    if (framePending || !root.classList.contains("has-motion")) return;
+    framePending = true;
+    requestAnimationFrame(updateScenes);
   }
 
-  function enterPlate(event) {
-    if (root.classList.contains("reduced-motion") || islandLayers.length !== regions.length ||
-        event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    event.preventDefault();
-    if (diveTimeout) return;
-    const island = islandLayers[2];
-    const bounds = island.getBoundingClientRect();
-    if (bounds.bottom < 0 || bounds.top > window.innerHeight) {
-      target.scrollIntoView();
-      target.focus({preventScroll: true});
-      return;
-    }
-    const piece = island.cloneNode(false);
-    piece.className = "dive-piece";
-    piece.style.cssText = "";
-    piece.style.setProperty("--left", (bounds.left + bounds.width / 2) + "px");
-    piece.style.setProperty("--top", (bounds.top + bounds.height / 2) + "px");
-    piece.style.setProperty("--width", bounds.width + "px");
-    dive.append(piece);
-    dive.dataset.stage = "enter";
-    const reveal = () => {
-      if (dive.dataset.stage !== "enter") return;
-      window.clearTimeout(diveTimeout);
-      dive.dataset.stage = "exit";
-      window.history.pushState(null, "", "#lemaitre");
-      target.scrollIntoView();
-      target.focus({preventScroll: true});
-      diveTimeout = window.setTimeout(endDive, 475);
-    };
-    piece.addEventListener("animationend", reveal, {once: true});
-    diveTimeout = window.setTimeout(reveal, 940);
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) visibleScenes.add(entry.target);
+        else visibleScenes.delete(entry.target);
+      }
+      scheduleScenes();
+    }, {rootMargin: "100px 0px"});
+    motionScenes.forEach((scene) => observer.observe(scene));
   }
 
   motionToggle.addEventListener("click", () => {
+    const scene = motionScenes.find((element) => {
+      const {top, bottom} = element.getBoundingClientRect();
+      return top < innerHeight / 2 && bottom > innerHeight / 2;
+    });
     quiet = !quiet;
     updateMotion();
-    plate.classList.toggle("layers-ready", islandLayers.length > 0 && !root.classList.contains("reduced-motion"));
-    schedulePlate();
+    if (scene === cosmic || scene === paper) {
+      document.getElementById(scene === cosmic ? "expansao" : "manuscrito").scrollIntoView();
+    }
   });
-  motion.addEventListener("change", () => {
-    updateMotion();
-    plate.classList.toggle("layers-ready", islandLayers.length > 0 && !root.classList.contains("reduced-motion"));
-    schedulePlate();
-  });
-  window.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && diveTimeout) endDive();
-  });
-  [plate, document.querySelector(".begin")].forEach((link) => link.addEventListener("click", enterPlate));
-  window.addEventListener("scroll", schedulePlate, {passive: true});
-  window.addEventListener("resize", schedulePlate, {passive: true});
+  motion.addEventListener("change", updateMotion);
+  window.addEventListener("scroll", scheduleScenes, {passive: true});
+  window.addEventListener("resize", scheduleScenes, {passive: true});
 
   const coordinates = {
     A: [0, 0],
@@ -227,14 +261,28 @@
   });
 
   const documentButtons = [...document.querySelectorAll("[data-document]")];
-  function showDocument(name) {
+  let sheetMotion;
+  function showDocument(name, animate = false) {
+    const incoming = document.getElementById(name);
+    if (animate && !incoming.hidden) return;
+    const outgoing = documentButtons.map((button) => document.getElementById(button.dataset.document))
+      .find((sheet) => !sheet.hidden);
+    const startHeight = animate ? outgoing.offsetHeight : 0;
+    sheetMotion?.cancel();
     documentButtons.forEach((button) => {
       const selected = button.dataset.document === name;
       button.setAttribute("aria-pressed", String(selected));
       document.getElementById(button.dataset.document).hidden = !selected;
     });
+    if (!animate || !root.classList.contains("has-motion") || !incoming.animate) return;
+    const endHeight = incoming.offsetHeight;
+    const offset = Math.min(11, Math.abs(startHeight - endHeight) * .07 + 4);
+    sheetMotion = incoming.animate([
+      {opacity: .58, transform: "translateY(" + offset + "px) scale(.988)"},
+      {opacity: 1, transform: "none"},
+    ], {duration: 285, easing: "cubic-bezier(.2,.7,.25,1)"});
   }
-  documentButtons.forEach((button) => button.addEventListener("click", () => showDocument(button.dataset.document)));
+  documentButtons.forEach((button) => button.addEventListener("click", () => showDocument(button.dataset.document, true)));
 
   const conclusion = document.querySelector(".last-question");
   if ("IntersectionObserver" in window) {
