@@ -8,10 +8,12 @@
   <link rel="canonical" href="https://semeadorcatolico.github.io/sementes/001/">
   <link rel="icon" href="../../assets/sementes/001/semeador.webp" type="image/webp">
   <link rel="stylesheet" href="../../assets/sementes/001/estilo.css">
+  <script src="../../assets/sementes/001/plano-sequencia.js" defer></script>
   <script src="../../assets/sementes/001/narrativa.js" defer></script>
   <title>O universo que nasceu do papel · Semente 001</title>
 </head>
 <body>
+  <canvas id="plano-sequencia" aria-hidden="true"></canvas>
   <a class="skip" href="#conteudo">Ir para a história</a>
   <header class="masthead frame">
     <a class="brand" href="https://semeadorcatolico.github.io/" aria-label="Projeto Semeador, página inicial">
@@ -32,10 +34,6 @@
       <figure class="hero-figure">
         <a href="#lemaitre" class="plate-link" aria-label="Começar a leitura pela história de Lemaître">
           <img class="hero-art" src="../../assets/sementes/001/gravura.webp" width="1536" height="1024" alt="Em xilogravura, Georges Lemaître escreve à mesa enquanto três manchas de galáxias surgem acima do papel." fetchpriority="high">
-          <span class="plate-layers" aria-hidden="true"></span>
-          <svg class="pen-trace" viewBox="0 0 1536 1024" aria-hidden="true">
-            <path d="M606 917q81-33 170-46M666 926q53-21 134-33M734 926l48-12"/>
-          </svg>
         </a>
         <figcaption><span>O físico à mesa</span><span>Gravura da Semente 001</span></figcaption>
       </figure>
@@ -55,6 +53,7 @@
         <p>Estudou a relatividade no seminário. Ordenado em 1923, trabalhou com Arthur Eddington em Cambridge, passou pelo Observatório de Harvard e se doutorou no MIT. Em Louvain, deu aulas e enfrentou uma pergunta que estava mudando a astronomia.</p>
       </div>
       <figure class="ledger">
+        <div class="writing-window" aria-hidden="true"></div>
         <svg viewBox="0 0 320 180" role="img" aria-label="Pena estilizada sobre a data 1923">
           <path d="M34 159c20-12 29-23 51-31 22-9 38-3 56-14M50 165c17-11 32-14 51-15m-4-75 26 19-12 47-38 19 12-41Z" fill="none" stroke="currentColor" stroke-width="2"/>
           <path d="M98 76C150 34 218 11 282 10c-25 23-68 55-161 88Zm-13 66 19-22" fill="currentColor" stroke="currentColor" stroke-width="2"/>
@@ -65,26 +64,7 @@
       </figure>
     </section>
 
-    <div class="cosmic-passage" aria-hidden="true">
-      <div class="cosmic-stage">
-        <div class="cosmic-paper"></div>
-        <div class="cosmic-field"></div>
-        <div class="cosmic-chart">
-          <svg viewBox="0 0 600 600" fill="none" aria-hidden="true">
-            <circle cx="300" cy="300" r="235"/>
-            <circle cx="300" cy="300" r="178"/>
-            <circle cx="300" cy="300" r="121"/>
-            <path d="M300 42v516M42 300h516M117 117l366 366m0-366L117 483"/>
-            <path class="chart-ticks" d="M300 54v23m0 446v23M54 300h23m446 0h23M300 112v22m166 166h22M294 300h12m-6-6v12"/>
-          </svg>
-        </div>
-        <div class="cosmic-camera">
-          <img class="cosmic-far" src="../../assets/sementes/001/mancha-1.webp" width="282" height="153" alt="" decoding="async">
-          <img class="cosmic-mid" src="../../assets/sementes/001/mancha-2.webp" width="518" height="236" alt="" decoding="async">
-          <img class="cosmic-near" src="../../assets/sementes/001/mancha-3.webp" width="729" height="354" alt="" decoding="async">
-        </div>
-      </div>
-    </div>
+    <div class="ink-window" aria-hidden="true"></div>
 
     <section id="expansao" class="scene universe" aria-labelledby="ii-title">
       <div class="frame universe-head">
@@ -171,12 +151,7 @@
       </div>
     </section>
 
-    <div class="paper-passage" aria-hidden="true">
-      <div class="paper-leaf">
-        <div class="paper-impression"></div>
-        <div class="paper-rules"></div>
-      </div>
-    </div>
+    <div class="print-window" aria-hidden="true"></div>
 
     <section id="manuscrito" class="scene archive" aria-labelledby="iii-title">
       <div class="frame">
@@ -190,24 +165,26 @@
             <button type="button" data-document="rascunho" aria-controls="rascunho" aria-pressed="true">Rascunho</button>
             <button type="button" data-document="publicado" aria-controls="publicado" aria-pressed="false">Publicado</button>
           </div>
-          <article class="document-sheet" id="rascunho" aria-labelledby="doc-draft">
-            <header><span>1931 / Carta à <i>Nature</i></span><span>Reconstituição gráfica</span></header>
-            <h3 id="doc-draft">O rascunho</h3>
-            <p class="typed">Hipótese de um estado quântico primordial.<span class="type-lines" aria-hidden="true"></span></p>
-            <details class="crossed">
-              <summary><span><del>Parágrafo sobre Deus</del><small>Transcrição e tradução</small></span><span class="disclose" aria-hidden="true">+</span></summary>
-              <blockquote lang="en">“God is essentially hidden”</blockquote>
-              <p>“Deus é essencialmente escondido.”</p>
-              <p class="source-note">Fragmento do último parágrafo, riscado no datiloscrito. <a href="https://arxiv.org/pdf/1105.6271#page=6">Ver fac-símile, figura 1</a>.</p>
-            </details>
-          </article>
-          <article class="document-sheet" id="publicado" aria-labelledby="doc-printed">
-            <header><span>9 MAI 1931 / <i>Nature</i> 127</span><span>Reconstituição gráfica</span></header>
-            <h3 id="doc-printed">A carta publicada</h3>
-            <p class="typed">Hipótese de um estado quântico primordial.<span class="type-lines" aria-hidden="true"></span></p>
-            <p class="omission">O parágrafo sobre Deus ficou no rascunho.</p>
-            <p class="source-note"><a href="https://fys.kuleuven.be/ster/meetings/lemaitre/lemaitre-hertog.pdf">Ler a reprodução integral na KU Leuven</a>.</p>
-          </article>
+          <div class="document-pages">
+            <article class="document-sheet" id="rascunho" aria-labelledby="doc-draft">
+              <header><span>1931 / Carta à <i>Nature</i></span><span>Reconstituição gráfica</span></header>
+              <h3 id="doc-draft">O rascunho</h3>
+              <p class="typed">Hipótese de um estado quântico primordial.<span class="type-lines" aria-hidden="true"></span></p>
+              <details class="crossed">
+                <summary><span><del>Parágrafo sobre Deus</del><small>Transcrição e tradução</small></span><span class="disclose" aria-hidden="true">+</span></summary>
+                <blockquote lang="en">“God is essentially hidden”</blockquote>
+                <p>“Deus é essencialmente escondido.”</p>
+                <p class="source-note">Fragmento do último parágrafo, riscado no datiloscrito. <a href="https://arxiv.org/pdf/1105.6271#page=6">Ver fac-símile, figura 1</a>.</p>
+              </details>
+            </article>
+            <article class="document-sheet" id="publicado" aria-labelledby="doc-printed">
+              <header><span>9 MAI 1931 / <i>Nature</i> 127</span><span>Reconstituição gráfica</span></header>
+              <h3 id="doc-printed">A carta publicada</h3>
+              <p class="typed">Hipótese de um estado quântico primordial.<span class="type-lines" aria-hidden="true"></span></p>
+              <p class="omission">O parágrafo sobre Deus ficou no rascunho.</p>
+              <p class="source-note"><a href="https://fys.kuleuven.be/ster/meetings/lemaitre/lemaitre-hertog.pdf">Ler a reprodução integral na KU Leuven</a>.</p>
+            </article>
+          </div>
         </div>
         <div class="archive-note">
           <p>O parágrafo sobre Deus ficou no rascunho. A motivação exata para o corte permanece incerta.</p>
@@ -244,7 +221,7 @@
       <p class="aquino">Séculos antes dos telescópios modernos, Tomás de Aquino já distinguia as duas perguntas. Ele aceitava pela fé que o mundo teve um começo e considerava que a razão, por si só, não o demonstrava.</p>
       <div class="last-question">
         <svg class="last-seed" viewBox="0 0 70 60" aria-hidden="true">
-          <path class="seed-star" d="m35 4 3 18 18 8-18 4-3 20-5-20-17-4 17-8Z"/>
+          <path class="seed-star" d="m35 5 4 19 17 5-17 4-4 20-4-20-17-4 17-5Z"/>
           <path class="seed-shape" d="M54 12C54 36 31 53 15 49 11 34 29 16 54 12Z"/><path class="seed-cut" d="M19 45q14-18 29-27"/>
         </svg>
         <p>Um sacerdote pôde fazer ciência de primeira linha e submeter suas ideias ao mesmo escrutínio que seus colegas.</p>
