@@ -117,3 +117,40 @@ h1, h2, h3 { text-wrap: balance; }
 .historical-portrait figcaption strong { color: var(--ink); }
 .historical-portrait figcaption a { text-underline-offset: 2px; }
 @media (max-width: 740px) { .historical-portrait { width: min(100%, 308px); margin-inline: 0; } .historical-photo { aspect-ratio: 19 / 20; } }
+
+/* Semente 001 — adaptação tipográfica do texto editorial aprovado. */
+.hero-deck { max-width: 41ch; margin-top: 15px; color: var(--soft); font-size: clamp(.95rem, 1.45vw, 1.14rem); line-height: 1.55; }
+.universe-head > p:not(.kicker) { max-width: 62ch; }
+.universe-head > p + p { margin-top: 1em; }
+.universe .interactive-cue { margin-top: 22px !important; padding-left: 16px; border-left: 2px solid #d5c3a0; color: var(--starlight); }
+.archive-head h2 { max-width: 18ch; font-size: clamp(2.5rem, 5.6vw, 4.4rem); line-height: 1.04; }
+.archive-head > p { max-width: 61ch; }
+.archive-head > p:not(.kicker) { margin-top: 1em; }
+.archive-head .document-question { font-size: clamp(1.16rem, 2.1vw, 1.36rem); line-height: 1.45; margin-top: 1.2em; }
+.archive-head .document-instruction { margin-top: 1.4em; color: #554b3e; font-size: .94rem; line-height: 1.55; }
+.archival-source { padding-block: 12px 18px; }
+.archival-source summary { font-size: 1rem; font-weight: 750; border-bottom: 1px solid #a99e89; }
+.archival-source summary span { float: right; }
+.archival-source > p { margin-top: 14px; }
+.archive-source-link { display: inline-flex; min-height: 44px; align-items: center; font: 700 .87rem/1.4 var(--sans); text-decoration: underline; }
+.archival-source iframe { display: block; width: 100%; height: min(68vh, 550px); margin-top: 16px; border: 1px solid var(--line); background: #f8f0df; }
+.archival-source .source-note { font-size: .8rem; }
+.reflection > p:not(.kicker) { max-width: 67ch; }
+.reflection .philosophy-surprise { border-left: 3px solid var(--ink); padding-left: 17px; font-size: clamp(1.17rem,2.5vw,1.46rem); line-height: 1.42; margin-block: 23px; }
+.last-question .final-invitation { font: 700 .92rem/1.4 var(--sans); letter-spacing: .04em; }
+.last-question .semeador-closing { border-top: 1px solid var(--line); padding-top: 22px; font-style: italic; color: var(--soft); }
+@media (max-width: 740px) {
+  .hero-deck { font-size: clamp(.96rem, 4.0vw, 1.12rem); line-height: 1.5; margin-top: 14px; max-width: 39ch; }
+  .profile { gap: 23px; }
+  .profile h2 { font-size: clamp(2rem, 8vw, 3.4rem); line-height: 1.055; }
+  .universe-head > p:not(.kicker) { font-size: 1.035rem; line-height: 1.58; }
+  .universe .interactive-cue { margin-top: 20px !important; font-size: .97rem; }
+  .archive-head h2 { font-size: clamp(2.1rem, 8.3vw, 3.45rem); max-width: 16ch; overflow-wrap: normal; }
+  .archive-head > p { font-size: 1.04rem; line-height: 1.58; }
+  .archive-head .document-question { font-size: 1.16rem; }
+  .archive-head .document-instruction { font-size: .91rem; }
+  .archival-source iframe { height: min(58svh, 460px); }
+  .reflection > p { line-height: 1.6; }
+  .last-question > p { max-width: 50ch; }
+  .last-question .final-invitation { font-size: .88rem; }
+}
