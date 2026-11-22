@@ -1,1 +1,249 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Semente 001 — Semeador</title><meta name="description" content="Primeira página experimental do Projeto Semeador."><meta name="theme-color" content="#f4eddd"><link rel="stylesheet" href="/assets/site.css"><link rel="icon" href="/assets/ramo.svg" type="image/svg+xml"></head><body><a class="skip" href="#conteudo">Ir para o conteúdo</a><div class="wrap"><header class="masthead"><a class="brand" href="/">semeador.</a><nav aria-label="Navegação principal"><a href="/">Início</a><a href="/#sementes">Sementes</a><a href="/#projeto">Projeto</a></nav></header><main id="conteudo" class="article"><p class="eyebrow">Semente 001 · Página experimental</p><h1>Uma primeira semente.</h1><p class="lead">Se você chegou aqui por um QR Code, encontrou o começo de uma nova conversa.</p><p>Esta página está reservada para a primeira publicação do Projeto Semeador. O endereço será mantido quando o conteúdo editorial definitivo estiver pronto.</p><p class="note">Esta é uma página de teste, não uma reflexão editorial definitiva.</p><a class="button" href="/">Conheça o Semeador</a></main><footer>Projeto Semeador · Uma iniciativa católica</footer></div></body></html>
+<!doctype html>
+<html lang="pt-BR" id="inicio">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5efe2">
+  <meta name="description" content="Uma gravura, um universo em expansão e um parágrafo riscado. Entre na história do padre e físico Georges Lemaître.">
+  <link rel="canonical" href="https://semeadorcatolico.github.io/sementes/001/">
+  <link rel="icon" href="../../assets/sementes/001/semeador.webp" type="image/webp">
+  <link rel="stylesheet" href="../../assets/sementes/001/estilo.css">
+  <script src="../../assets/sementes/001/plano-sequencia.js" defer></script>
+  <script src="../../assets/sementes/001/narrativa.js" defer></script>
+  <title>O universo que nasceu do papel · Semente 001</title>
+</head>
+<body>
+  <canvas id="plano-sequencia" aria-hidden="true"></canvas>
+  <a class="skip" href="#conteudo">Ir para a história</a>
+  <header class="masthead frame">
+    <a class="brand" href="https://semeadorcatolico.github.io/" aria-label="Projeto Semeador, página inicial">
+      <img src="../../assets/sementes/001/semeador.webp" alt="" width="145" height="160">
+      <span>Semeador</span>
+    </a>
+    <span class="stock">Semente 001</span>
+    <button class="motion interactive" id="motion-toggle" type="button" aria-pressed="false">Reduzir movimento</button>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero frame" aria-labelledby="titulo">
+      <div class="hero-type">
+        <p class="kicker"><span></span> Georges Lemaître</p>
+        <h1 id="titulo">O universo<br>que nasceu<br>do <em>papel.</em></h1>
+        <p class="hero-lead">Um padre ajudou a formular<br class="desktop-break"> a teoria do Big Bang.</p>
+      </div>
+      <figure class="hero-figure">
+        <a href="#lemaitre" class="plate-link" aria-label="Começar a leitura pela história de Lemaître">
+          <img class="hero-art" src="../../assets/sementes/001/gravura.webp" width="1536" height="1024" alt="Em xilogravura, Georges Lemaître escreve à mesa enquanto três manchas de galáxias surgem acima do papel." fetchpriority="high">
+        </a>
+        <figcaption><span>O físico à mesa</span><span>Gravura da Semente 001</span></figcaption>
+      </figure>
+      <div class="hero-actions">
+        <a class="begin" href="#lemaitre">Comece a leitura</a>
+        <span class="read-time">ou deslize para ler</span>
+      </div>
+    </section>
+    <div class="ink-bridge" aria-hidden="true"></div>
+
+    <section id="lemaitre" class="scene profile frame" aria-labelledby="i-title" tabindex="-1">
+      <aside class="section-index" aria-hidden="true">I</aside>
+      <div class="scene-copy">
+        <p class="kicker">I / O homem entre a batina e as equações</p>
+        <h2 id="i-title">Duas vocações.<br>Uma mesa de trabalho.</h2>
+        <p class="standfirst">Georges Lemaître tinha sido soldado antes de ser padre. A guerra interrompeu seus estudos de engenharia. Na volta, escolheu a matemática e a física.</p>
+        <p>Estudou a relatividade no seminário. Ordenado em 1923, trabalhou com Arthur Eddington em Cambridge, passou pelo Observatório de Harvard e se doutorou no MIT. Em Louvain, deu aulas e enfrentou uma pergunta que estava mudando a astronomia.</p>
+      </div>
+      <figure class="ledger">
+        <div class="writing-window" aria-hidden="true"></div>
+        <svg viewBox="0 0 320 180" role="img" aria-label="Pena estilizada sobre a data 1923">
+          <path d="M34 159c20-12 29-23 51-31 22-9 38-3 56-14M50 165c17-11 32-14 51-15m-4-75 26 19-12 47-38 19 12-41Z" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="M98 76C150 34 218 11 282 10c-25 23-68 55-161 88Zm-13 66 19-22" fill="currentColor" stroke="currentColor" stroke-width="2"/>
+          <path d="m103 89 139-64m-91 25-12 23m41-35-8 20m42-32-8 17" stroke="var(--paper)" stroke-width="2" fill="none"/>
+          <text x="312" y="155" text-anchor="end" font-size="58" font-family="Georgia" font-weight="bold">1923</text>
+        </svg>
+        <figcaption>Lemaître é ordenado sacerdote.</figcaption>
+      </figure>
+    </section>
+
+    <div class="ink-window" aria-hidden="true"></div>
+
+    <section id="expansao" class="scene universe" aria-labelledby="ii-title">
+      <div class="frame universe-head">
+        <p class="kicker">II / O papel se torna universo</p>
+        <div class="universe-title">
+          <span class="year" aria-hidden="true">1927</span>
+          <h2 id="ii-title">As distâncias<br>estavam crescendo.</h2>
+        </div>
+        <p class="standfirst">Em 1927, Lemaître ligou a relatividade aos dados das galáxias. Em grande escala, quanto mais distante a galáxia, mais depressa ela tende a se afastar.</p>
+      </div>
+      <figure class="atlas frame" aria-labelledby="atlas-title">
+        <div class="atlas-top">
+          <figcaption id="atlas-title">Experimente a expansão</figcaption>
+          <span>Modelo esquemático</span>
+        </div>
+        <div class="sky">
+          <svg class="map" viewBox="0 0 440 366" aria-hidden="true">
+            <defs>
+              <pattern id="graticula" width="25" height="25" patternUnits="userSpaceOnUse">
+                <path d="M25 0H0V25" fill="none" stroke="#3e3b34" stroke-width=".65"/>
+              </pattern>
+              <g id="espiral">
+                <path fill="#e9e1d0" d="M-23 7C-14-6 4-13 19-10 27-8 23-3 18 0 7 7-6 11-15 9-23 6-10-1 2-4 13-7 14-4 12-2 8 1 2 3-3 3 4 0 2-1-2 0-10 3-13 5-9 6 0 8 17 0 18-4 19-9-5-7-23 7Z"/>
+                <path fill="#e9e1d0" d="M-20 10c9 4 22 1 32-3-10 6-23 9-32 3ZM18-12l7 2-5-3Z"/>
+              </g>
+            </defs>
+            <rect width="440" height="366" fill="url(#graticula)"/>
+            <path d="M220 0v366M0 183h440" class="reticle"/>
+            <g class="star-cuts">
+              <path d="m28 49 2-6 1 6 6 1-6 1-1 6-2-6-6-1Zm359 29 1-8 2 8 8 1-8 2-2 8-1-8-8-2ZM111 75l3-8 1 8 8 2-8 1-1 8-3-8-7-1Zm262 219 1-5 2 5 5 1-5 1-2 5-1-5-5-1Z"/>
+              <path d="m65 233 4-3 1 1-4 4Zm101-137 5-3 2 2-7 2Zm145-53 5 3-6 1Zm22 203 5-2 1 2-6 2ZM80 310l3-3 2 2-4 3Zm322-91 4-3 2 2-5 2Z"/>
+            </g>
+            <g class="ghosts" id="traces"></g>
+            <g class="links">
+              <line id="distance-one" x1="220" y1="183" x2="263.6" y2="151.7"/>
+              <line id="distance-two" x1="220" y1="183" x2="188.9" y2="141"/>
+            </g>
+            <g class="node" data-node="C" transform="translate(188.9 141)"><use href="#espiral" transform="rotate(40) scale(.83)"/><text x="-14" y="-19">C</text></g>
+            <g class="node" data-node="B" transform="translate(263.6 151.7)"><use href="#espiral" transform="rotate(-23)"/><text x="12" y="-16">B</text></g>
+            <g class="node" data-node="A" transform="translate(220 183)"><use href="#espiral"/><text x="13" y="-16">A</text></g>
+            <g class="node" data-node="D" transform="translate(168 206)"><use href="#espiral" transform="rotate(-24) scale(.69)"/><text x="-14" y="20">D</text></g>
+            <g class="node" data-node="E" transform="translate(237 225)"><use href="#espiral" transform="rotate(55) scale(.76)"/><text x="13" y="17">E</text></g>
+            <g class="node" data-node="F" transform="translate(279 199)"><use href="#espiral" transform="rotate(15) scale(.68)"/><text x="14" y="19">F</text></g>
+            <circle cx="220" cy="183" r="26" class="origin-ring"/>
+            <g class="scale-strip"><path d="M349 349v6m0-3h14m0-3v6"/><text x="370" y="355">1 unidade</text></g>
+          </svg>
+        </div>
+        <div class="atlas-controls interactive">
+          <div class="range-area">
+            <div class="range-title">
+              <label for="expansion-scale">Escala do universo</label>
+              <output id="scale-value" for="expansion-scale">1,00×</output>
+            </div>
+            <input id="expansion-scale" type="range" min="100" max="190" step="1" value="100" aria-describedby="range-hint">
+            <div class="range-caption" aria-hidden="true"><span>1× · inicial</span><span>1,9×</span></div>
+            <p id="range-hint" class="screenreader">Deslize ou use as setas para mudar as distâncias entre as galáxias.</p>
+          </div>
+          <div class="atlas-actions">
+            <div class="observer" role="group" aria-label="Galáxia de observação">
+              <span>Observar de</span>
+              <button type="button" data-origin="A" aria-label="Observar da galáxia A" aria-pressed="true">A</button>
+              <button type="button" data-origin="B" aria-label="Observar da galáxia B" aria-pressed="false">B</button>
+              <button type="button" data-origin="C" aria-label="Observar da galáxia C" aria-pressed="false">C</button>
+            </div>
+            <button class="reset" id="reset-expansion" type="button">Reiniciar</button>
+          </div>
+          <p class="comparison" id="distance-value">De A a B: 3,8 → 3,8 unidades.</p>
+          <p class="trace-note" id="trace-note" hidden>Os círculos vazios marcam as posições na escala inicial.</p>
+          <p class="screenreader" id="expansion-status" role="status"></p>
+        </div>
+        <p class="atlas-caption">As distâncias aumentam. As galáxias conservam o tamanho no desenho. Escolher outra galáxia muda o ponto de observação, e a expansão continua visível.</p>
+      </figure>
+      <div class="frame deep-space">
+        <details>
+          <summary>De onde vieram os dados?</summary>
+          <p>Friedmann mostrou que as equações de Einstein admitiam universos em evolução. Slipher mediu deslocamentos na luz das galáxias. Lemaître combinou velocidades e estimativas de distância em 1927. Hubble publicou a relação observacional em 1929.</p>
+          <a href="https://articles.adsabs.harvard.edu/pdf/1927ASSB...47...49L">Artigo original de Lemaître</a>
+        </details>
+        <div class="later">
+          <p class="kicker">Quatro anos depois</p>
+          <h3>E se voltássemos no tempo?</h3>
+          <p>Em 1931, Lemaître aventou um estado quântico primordial. Décadas de trabalho coletivo e evidências como a radiação cósmica de fundo, detectada em 1965, sustentaram a história de um universo jovem, quente e denso.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="print-window" aria-hidden="true"></div>
+
+    <section id="manuscrito" class="scene archive" aria-labelledby="iii-title">
+      <div class="frame">
+        <header class="archive-head">
+          <p class="kicker">III / O mistério do manuscrito</p>
+          <h2 id="iii-title">Um parágrafo<br>ficou no papel.</h2>
+          <p class="standfirst">Em 1931, Lemaître escreveu à <i>Nature</i> sobre o começo do universo. Compare o rascunho com a carta publicada.</p>
+        </header>
+        <div class="document">
+          <div class="document-bar interactive" role="group" aria-label="Escolha a versão da carta">
+            <button type="button" data-document="rascunho" aria-controls="rascunho" aria-pressed="true">Rascunho</button>
+            <button type="button" data-document="publicado" aria-controls="publicado" aria-pressed="false">Publicado</button>
+          </div>
+          <div class="document-pages">
+            <article class="document-sheet" id="rascunho" aria-labelledby="doc-draft">
+              <header><span>1931 / Carta à <i>Nature</i></span><span>Reconstituição gráfica</span></header>
+              <h3 id="doc-draft">O rascunho</h3>
+              <p class="typed">Hipótese de um estado quântico primordial.<span class="type-lines" aria-hidden="true"></span></p>
+              <details class="crossed">
+                <summary><span><del>Parágrafo sobre Deus</del><small>Transcrição e tradução</small></span><span class="disclose" aria-hidden="true">+</span></summary>
+                <blockquote lang="en">“God is essentially hidden”</blockquote>
+                <p>“Deus é essencialmente escondido.”</p>
+                <p class="source-note">Fragmento do último parágrafo, riscado no datiloscrito. <a href="https://arxiv.org/pdf/1105.6271#page=6">Ver fac-símile, figura 1</a>.</p>
+              </details>
+            </article>
+            <article class="document-sheet" id="publicado" aria-labelledby="doc-printed">
+              <header><span>9 MAI 1931 / <i>Nature</i> 127</span><span>Reconstituição gráfica</span></header>
+              <h3 id="doc-printed">A carta publicada</h3>
+              <p class="typed">Hipótese de um estado quântico primordial.<span class="type-lines" aria-hidden="true"></span></p>
+              <p class="omission">O parágrafo sobre Deus ficou no rascunho.</p>
+              <p class="source-note"><a href="https://fys.kuleuven.be/ster/meetings/lemaitre/lemaitre-hertog.pdf">Ler a reprodução integral na KU Leuven</a>.</p>
+            </article>
+          </div>
+        </div>
+        <div class="archive-note">
+          <p>O parágrafo sobre Deus ficou no rascunho. A motivação exata para o corte permanece incerta.</p>
+          <p>Em 1951, Pio XII evocou o <i>Faça-se a luz</i> ao falar das descobertas sobre o cosmos, com ressalvas sobre o alcance das evidências. No ano seguinte, fez outro discurso aos astrônomos e deixou de lado essa associação. Uma eventual conversa privada com Lemaître permanece incerta.</p>
+          <p><strong>Em 1958, Lemaître deixou sua posição clara em Solvay.</strong> A hipótese física deixava em aberto a questão de um Criador.</p>
+          <details>
+            <summary>Leia os discursos e a posição de Lemaître</summary>
+            <ul>
+              <li><a href="https://www.vatican.va/content/pius-xii/it/speeches/1951/documents/hf_p-xii_spe_19511122_di-serena.html">Pio XII, discurso de 1951</a></li>
+              <li><a href="https://www.vatican.va/content/pius-xii/fr/speeches/1952/documents/hf_p-xii_spe_19520907_la-presence.html">Pio XII, discurso de 1952</a></li>
+              <li><a href="https://archives.uclouvain.be/exhibits/show/georges-lemaitre-en/beginning-or-creation/pius-xii-un-ora">O que documentam os Arquivos de Louvain</a></li>
+              <li><a href="https://www.pas.va/en/publications/acta/acta24pas/hertog.html">Thomas Hertog sobre Solvay</a></li>
+            </ul>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="pergunta" class="scene reflection frame" aria-labelledby="iv-title">
+      <p class="kicker">IV / Começo e criação</p>
+      <h2 id="iv-title">O que um começo<br>pode provar?</h2>
+      <div class="two-questions">
+        <div>
+          <svg viewBox="0 0 220 32" aria-hidden="true"><path d="M7 16h201m-8-6 8 6-8 6M35 9v14m43-11v8m44-8v8m44-8v8" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="35" cy="16" r="4" fill="currentColor"/></svg>
+          <h3>Como o universo evoluiu?</h3>
+          <p>A cosmologia reconstrói estados físicos anteriores a partir de modelos e observações.</p>
+        </div>
+        <div>
+          <svg viewBox="0 0 220 32" aria-hidden="true"><path d="M7 8v7q0 6 8 6h84l11 7 11-7h84q8 0 8-6V8M35 4v8m43-8v8m44-8v8m44-8v8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          <h3>O que significa existir?</h3>
+          <p>Na tradição católica, criação quer dizer que o universo recebe de Deus a própria existência, inclusive agora.</p>
+        </div>
+      </div>
+      <p class="aquino">Séculos antes dos telescópios modernos, Tomás de Aquino já distinguia as duas perguntas. Ele aceitava pela fé que o mundo teve um começo e considerava que a razão, por si só, não o demonstrava.</p>
+      <div class="last-question">
+        <svg class="last-seed" viewBox="0 0 70 60" aria-hidden="true">
+          <path class="seed-star" d="m35 5 4 19 17 5-17 4-4 20-4-20-17-4 17-5Z"/>
+          <path class="seed-shape" d="M54 12C54 36 31 53 15 49 11 34 29 16 54 12Z"/><path class="seed-cut" d="M19 45q14-18 29-27"/>
+        </svg>
+        <p>Um sacerdote pôde fazer ciência de primeira linha e submeter suas ideias ao mesmo escrutínio que seus colegas.</p>
+        <h3>Acreditar em Deus é incompatível com pensar cientificamente?</h3>
+      </div>
+      <details class="sources">
+        <summary>Fontes para continuar</summary>
+        <ul>
+          <li><a href="https://articles.adsabs.harvard.edu/pdf/1927ASSB...47...49L">Lemaître · artigo sobre a expansão, 1927</a></li>
+          <li><a href="https://doi.org/10.1073/pnas.15.3.168">Hubble · distâncias e velocidades, 1929</a></li>
+          <li><a href="https://doi.org/10.1038/127706b0">Lemaître · carta à Nature, 1931</a></li>
+          <li><a href="https://arxiv.org/abs/1105.6271">Luminet · nota sobre a carta e o datiloscrito</a></li>
+          <li><a href="https://academieroyale.be/academie/documents/LambertDarwin_Lemaitre13642.pdf">Lambert · transcrição do trecho, p. 199</a></li>
+          <li><a href="https://articles.adsabs.harvard.edu/pdf/1965ApJ...142..419P">Penzias e Wilson · radiação cósmica, 1965</a></li>
+          <li><a href="https://www.corpusthomisticum.org/sth1044.html">Tomás de Aquino · Suma Teológica I, questões 44–46</a></li>
+        </ul>
+      </details>
+    </section>
+  </main>
+  <footer class="footer frame">
+    <div class="brand"><img src="../../assets/sementes/001/semeador.webp" alt="" width="145" height="160" loading="lazy"><span>Semeador</span></div>
+    <a href="#inicio">Voltar ao início ↑</a>
+  </footer>
+</body>
+</html>
