@@ -138,6 +138,7 @@ h1, h2, h3 { text-wrap: balance; }
 .reflection > p:not(.kicker) { max-width: 67ch; }
 .reflection .philosophy-surprise { border-left: 3px solid var(--ink); padding-left: 17px; font-size: clamp(1.17rem,2.5vw,1.46rem); line-height: 1.42; margin-block: 23px; }
 .last-question .final-invitation { font: 700 .92rem/1.4 var(--sans); letter-spacing: .04em; }
+.last-question h3 + p { margin-top: 12px; }
 .last-question .semeador-closing { border-top: 1px solid var(--line); padding-top: 22px; font-style: italic; color: var(--soft); }
 @media (max-width: 740px) {
   .hero-deck { font-size: clamp(.96rem, 4.0vw, 1.12rem); line-height: 1.5; margin-top: 14px; max-width: 39ch; }
@@ -161,7 +162,7 @@ h1, h2, h3 { text-wrap: balance; }
 .authentic-manuscript { margin: clamp(27px, 6vw, 45px) auto 0; max-width: 800px; }
 .manuscript-image-link { display: block; background: #fff; border: 1px solid #aba295; padding: clamp(7px, 1.6vw, 13px); }
 .manuscript-image-link:focus-visible { outline: 3px solid #171611; outline-offset: 4px; }
-.manuscript-image-link img { display: block; width: 100%; height: auto; aspect-ratio: 1000 / 981; object-fit: contain; background: #fff; }
+.manuscript-image-link img { display: block; width: 100%; height: auto; background: #fff; }
 .authentic-manuscript figcaption { max-width: 72ch; margin-top: 13px; color: #4e473b; font-size: .94rem; line-height: 1.58; letter-spacing: 0; text-transform: none; }
 .authentic-manuscript figcaption a { color: #211d17; font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .manuscript-explanation { max-width: 750px; margin: clamp(24px, 5.5vw, 39px) auto 0; padding: 20px 0; border-top: 1px solid #aca18b; border-bottom: 1px solid #aca18b; }
