@@ -1,0 +1,107 @@
+/* Semente 001 — revisão editorial mobile-first.
+   Camada aditiva: permite comparar com o design original (83800a5)
+   sem reescrever o CSS histórico. Nenhuma transição cinematográfica. */
+
+:root { --paper: #f5efe2; --ink: #191711; --soft: #554f44; }
+body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+.hero-art { image-rendering: auto; }
+.plate-link { cursor: default; }
+.ink-dive { display: none !important; }
+.motion { display: none !important; }
+.hero-art, .plate-layers, .plate-part, .pen-trace { transition: none !important; }
+.scene-copy p, .later p, .archive-note p, .reflection p { text-wrap: pretty; }
+h1, h2, h3 { text-wrap: balance; }
+
+@media (max-width: 740px) {
+  :root { --gutter: clamp(20px, 5.75vw, 28px); }
+  body { font-size: 1.09375rem; line-height: 1.62; }
+  .frame { width: calc(100% - 2 * var(--gutter)); }
+  .masthead { min-height: 62px; gap: 9px; }
+  .brand { gap: 5px; font-size: clamp(1.07rem, 4.7vw, 1.35rem); letter-spacing: -.035em; }
+  .brand img { width: 26px; height: 30px; }
+  .stock { margin-left: auto; padding-left: 9px; font-size: .62rem; letter-spacing: .05em; }
+  .hero { padding-top: 31px; padding-bottom: 37px; }
+  .hero .kicker { margin-bottom: 13px; }
+  .hero .kicker span { width: 19px; }
+  .kicker { font-size: .7rem; letter-spacing: .075em; }
+  h1 { font-size: clamp(2.73rem, 11.9vw, 4.45rem); line-height: .975; letter-spacing: -.063em; }
+  h1 em { letter-spacing: -.063em; }
+  .hero-lead { max-width: 33ch; margin-top: 17px; font-size: clamp(1.07rem, 4.15vw, 1.24rem); line-height: 1.35; }
+  .hero-figure { margin-top: 17px; margin-inline: -7px; }
+  .hero-figure figcaption { gap: 10px; padding-top: 8px; font-size: .62rem; line-height: 1.4; letter-spacing: .035em; }
+  .hero-actions { gap: 11px; margin-top: 21px; align-items: center; }
+  .begin { justify-content: space-between; min-height: 48px; padding: 11px 15px; font-size: .78rem; letter-spacing: .015em; }
+  .read-time { font-size: .67rem; white-space: nowrap; }
+  .ink-bridge { height: 6px; }
+
+  .scene { padding-block: clamp(53px, 12.5vw, 80px); }
+  .scene h2 { font-size: clamp(2.17rem, 8.85vw, 3.7rem); line-height: 1.035; letter-spacing: -.053em; }
+  .standfirst { font-size: clamp(1.09rem, 4.55vw, 1.27rem); line-height: 1.48; }
+  .scene-copy > p:not(.kicker), .later > p, .archive-note > p { max-width: 57ch; }
+  .profile { gap: 27px; }
+  .section-index { top: 11px; font-size: .69rem; }
+  .ledger { max-width: 330px; padding-block: 8px; }
+  .ledger svg { max-height: 125px; }
+  .ledger figcaption { font-size: .7rem; }
+
+  .universe { padding-block: 59px 65px; }
+  .universe-title { display: flex; flex-direction: row; align-items: flex-start; gap: clamp(13px, 4vw, 22px); margin: 15px 0 23px; }
+  .universe-title .year { font-size: clamp(3.2rem, 13.8vw, 5rem); line-height: .9; letter-spacing: -.07em; }
+  .universe-title h2 { font-size: clamp(1.75rem, 7.3vw, 2.62rem); line-height: 1.02; }
+  .atlas { margin-top: 28px; }
+  .atlas-top { padding-block: 12px; align-items: center; }
+  .atlas-top figcaption { font-size: clamp(.76rem, 3vw, .92rem); }
+  .atlas-top span { font-size: .58rem; }
+  .sky { margin-inline: -3px; }
+  .map { max-height: min(46svh, 370px); }
+  .atlas-controls { padding-top: 16px; }
+  .range-title { font-size: .92rem; }
+  .range-caption { font-size: .65rem; }
+  .atlas-actions { gap: 12px; flex-wrap: wrap; align-items: center; }
+  .observer { flex-wrap: wrap; gap: 6px; font-size: .83rem; }
+  .observer span { max-width: none; padding-right: 7px; }
+  .observer button, .reset { min-height: 46px; min-width: 46px; }
+  .reset { margin-left: auto; }
+  .comparison { font-size: .76rem; overflow-wrap: anywhere; line-height: 1.6; }
+  .trace-note { font-size: .82rem; }
+  .atlas-caption { font-size: 1rem; line-height: 1.54; }
+  .later { margin-top: 39px; }
+  .later h3 { font-size: clamp(1.8rem, 7.2vw, 2.55rem); }
+
+  .archive { padding-top: 58px; padding-bottom: 68px; }
+  .archive-head { margin-bottom: 26px; }
+  .document-bar button { flex: 1; min-width: 0; font-size: .85rem; }
+  .document-sheet { padding: clamp(19px, 5.8vw, 29px); min-height: 225px; }
+  .document-sheet header { font-size: .63rem; flex-wrap: wrap; row-gap: 4px; }
+  .document-sheet h3 { margin-top: 19px; font-size: clamp(1.7rem, 7vw, 2.4rem); }
+  .typed { font-size: .85rem; overflow-wrap: anywhere; }
+  .crossed summary { line-height: 1.4; }
+  .crossed blockquote { font-size: 1.12rem; }
+  .source-note { font-size: .84rem; line-height: 1.5; }
+  .archive-note { margin-top: 27px; }
+
+  .reflection { padding-block: 61px 65px; }
+  .two-questions { gap: 0; margin-block: 25px; }
+  .two-questions > div { padding-bottom: 21px; }
+  .two-questions p { line-height: 1.56; }
+  .last-question { padding-block: 60px 43px; }
+  .last-question h3 { font-size: clamp(2.12rem, 8.7vw, 3.65rem); line-height: 1.07; letter-spacing: -.052em; }
+  .last-question p { max-width: 37ch; }
+  .footer { padding-block: 16px; min-height: 80px; gap: 10px; }
+  .footer > a { font-size: .77rem; }
+}
+@media (max-width: 370px) {
+  .stock { font-size: .58rem; padding-left: 6px; }
+  .hero { padding-top: 26px; }
+  .hero-figure figcaption { font-size: .58rem; }
+  .universe-title { gap: 11px; }
+  .universe-title .year { font-size: 3.15rem; }
+  .universe-title h2 { font-size: 1.68rem; }
+  .range-title { font-size: .85rem; }
+  .atlas-top span { max-width: 9ch; }
+  .two-questions { grid-template-columns: 1fr; }
+  .two-questions > div + div { border: 0; border-top: 1px solid var(--line); padding-left: 0; padding-top: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
