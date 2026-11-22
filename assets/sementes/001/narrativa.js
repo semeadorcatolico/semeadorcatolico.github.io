@@ -238,12 +238,19 @@
 
   const archivalSource = document.querySelector(".archival-source");
   const archiveFrame = archivalSource?.querySelector("iframe[data-src]");
-  archiveFrame?.parentElement.addEventListener("toggle", () => {
-    if (archivalSource.open && !archiveFrame.hasAttribute("src")) {
-      archiveFrame.src = archiveFrame.dataset.src;
-      archiveFrame.hidden = false;
-    }
-  });
+  if (archiveFrame) {
+    const wideScreen = matchMedia("(min-width: 741px)");
+    const embedNote = archivalSource.querySelector(".archive-embed-note");
+    const updateArchivePreview = () => {
+      archiveFrame.hidden = !wideScreen.matches;
+      embedNote.hidden = archiveFrame.hidden;
+      if (archivalSource.open && wideScreen.matches && !archiveFrame.hasAttribute("src")) {
+        archiveFrame.src = archiveFrame.dataset.src;
+      }
+    };
+    archivalSource.addEventListener("toggle", updateArchivePreview);
+    wideScreen.addEventListener("change", updateArchivePreview);
+  }
 
   const conclusion = document.querySelector(".last-question");
   if ("IntersectionObserver" in window) {
