@@ -226,32 +226,6 @@
     setOrigin("A");
   });
 
-  const documentButtons = [...document.querySelectorAll("[data-document]")];
-  function showDocument(name) {
-    documentButtons.forEach((button) => {
-      const selected = button.dataset.document === name;
-      button.setAttribute("aria-pressed", String(selected));
-      document.getElementById(button.dataset.document).hidden = !selected;
-    });
-  }
-  documentButtons.forEach((button) => button.addEventListener("click", () => showDocument(button.dataset.document)));
-
-  const archivalSource = document.querySelector(".archival-source");
-  const archiveFrame = archivalSource?.querySelector("iframe[data-src]");
-  if (archiveFrame) {
-    const wideScreen = matchMedia("(min-width: 741px)");
-    const embedNote = archivalSource.querySelector(".archive-embed-note");
-    const updateArchivePreview = () => {
-      archiveFrame.hidden = !wideScreen.matches;
-      embedNote.hidden = archiveFrame.hidden;
-      if (archivalSource.open && wideScreen.matches && !archiveFrame.hasAttribute("src")) {
-        archiveFrame.src = archiveFrame.dataset.src;
-      }
-    };
-    archivalSource.addEventListener("toggle", updateArchivePreview);
-    wideScreen.addEventListener("change", updateArchivePreview);
-  }
-
   const conclusion = document.querySelector(".last-question");
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver((entries) => {
@@ -263,7 +237,6 @@
   }
 
   updateMotion();
-  showDocument("rascunho");
   renderExpansion();
   root.classList.add("enhanced");
   if (document.readyState === "complete") loadLayers();
