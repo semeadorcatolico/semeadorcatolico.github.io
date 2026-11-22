@@ -1,0 +1,183 @@
+/* Semente 001 — revisão editorial mobile-first.
+   Camada aditiva: permite comparar com o design original (83800a5)
+   sem reescrever o CSS histórico. Nenhuma transição cinematográfica. */
+
+:root { --paper: #f5efe2; --ink: #191711; --soft: #554f44; }
+body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+.hero-art { image-rendering: auto; }
+.ink-dive { display: none !important; }
+.motion { display: none !important; }
+.hero-art, .plate-layers, .plate-part, .pen-trace { transition: none !important; }
+.scene-copy p, .later p, .archive-note p, .reflection p { text-wrap: pretty; }
+h1, h2, h3 { text-wrap: balance; }
+
+@media (max-width: 740px) {
+  :root { --gutter: clamp(20px, 5.75vw, 28px); }
+  body { font-size: 1.09375rem; line-height: 1.62; }
+  .frame { width: calc(100% - 2 * var(--gutter)); }
+  .masthead { min-height: 62px; gap: 9px; }
+  .brand { gap: 5px; font-size: clamp(1.07rem, 4.7vw, 1.35rem); letter-spacing: -.035em; }
+  .brand img { width: 26px; height: 30px; }
+  .stock { margin-left: auto; padding-left: 9px; font-size: .62rem; letter-spacing: .05em; }
+  .hero { padding-top: 31px; padding-bottom: 37px; }
+  .hero .kicker { margin-bottom: 13px; }
+  .hero .kicker span { width: 19px; }
+  .kicker { font-size: .7rem; letter-spacing: .075em; }
+  h1 { font-size: clamp(2.73rem, 11.9vw, 4.45rem); line-height: .975; letter-spacing: -.063em; }
+  h1 em { letter-spacing: -.063em; }
+  .hero-lead { max-width: 33ch; margin-top: 17px; font-size: clamp(1.07rem, 4.15vw, 1.24rem); line-height: 1.35; }
+  .hero-figure { margin-top: 17px; margin-inline: -7px; }
+  .hero-figure figcaption { gap: 10px; padding-top: 8px; font-size: .62rem; line-height: 1.4; letter-spacing: .035em; }
+  .hero-actions { gap: 11px; margin-top: 21px; align-items: center; }
+  .begin { justify-content: space-between; min-height: 48px; padding: 11px 15px; font-size: .78rem; letter-spacing: .015em; }
+  .read-time { font-size: .67rem; white-space: nowrap; }
+  .ink-bridge { height: 6px; }
+
+  .scene { padding-block: clamp(53px, 12.5vw, 80px); }
+  .scene h2 { font-size: clamp(2.17rem, 8.85vw, 3.7rem); line-height: 1.035; letter-spacing: -.053em; }
+  .standfirst { font-size: clamp(1.09rem, 4.55vw, 1.27rem); line-height: 1.48; }
+  .scene-copy > p:not(.kicker), .later > p, .archive-note > p { max-width: 57ch; }
+  .profile { gap: 27px; }
+  .section-index { top: 11px; font-size: .69rem; }
+  .ledger { max-width: 330px; padding-block: 8px; }
+  .ledger svg { max-height: 125px; }
+  .ledger figcaption { font-size: .7rem; }
+
+  .universe { padding-block: 59px 65px; }
+  .universe-title { display: flex; flex-direction: row; align-items: flex-start; gap: clamp(13px, 4vw, 22px); margin: 15px 0 23px; }
+  .universe-title .year { font-size: clamp(3.2rem, 13.8vw, 5rem); line-height: .9; letter-spacing: -.07em; }
+  .universe-title h2 { font-size: clamp(1.75rem, 7.3vw, 2.62rem); line-height: 1.02; }
+  .atlas { margin-top: 28px; }
+  .atlas-top { padding-block: 12px; align-items: center; }
+  .atlas-top figcaption { font-size: clamp(.76rem, 3vw, .92rem); }
+  .atlas-top span { font-size: .58rem; }
+  .sky { margin-inline: -3px; }
+  .map { max-height: min(46svh, 370px); }
+  .node text { font-size: 17px; }
+  .atlas-controls { padding-top: 16px; }
+  .range-title { font-size: .92rem; }
+  .range-caption { font-size: .65rem; }
+  .atlas-actions { gap: 12px; flex-wrap: wrap; align-items: center; }
+  .observer { flex-wrap: wrap; gap: 6px; font-size: .83rem; }
+  .observer span { max-width: none; padding-right: 7px; }
+  .observer button, .reset { min-height: 46px; min-width: 46px; }
+  .reset { margin-left: auto; }
+  .comparison { font-size: .76rem; overflow-wrap: anywhere; line-height: 1.6; }
+  .trace-note { font-size: .82rem; }
+  .atlas-caption { font-size: 1rem; line-height: 1.54; }
+  .later { margin-top: 39px; }
+  .later h3 { font-size: clamp(1.8rem, 7.2vw, 2.55rem); }
+
+  .archive { padding-top: 58px; padding-bottom: 68px; }
+  .archive-head { margin-bottom: 26px; }
+  .document-bar button { flex: 1; min-width: 0; font-size: .85rem; }
+  .document-sheet { padding: clamp(19px, 5.8vw, 29px); min-height: 225px; }
+  .document-sheet header { font-size: .63rem; flex-wrap: wrap; row-gap: 4px; }
+  .document-sheet h3 { margin-top: 19px; font-size: clamp(1.7rem, 7vw, 2.4rem); }
+  .typed { font-size: .85rem; overflow-wrap: anywhere; }
+  .crossed summary { line-height: 1.4; }
+  .crossed blockquote { font-size: 1.12rem; }
+  .source-note { font-size: .84rem; line-height: 1.5; }
+  .archive-note { margin-top: 27px; }
+
+  .reflection { padding-block: 61px 65px; }
+  .two-questions { gap: 0; margin-block: 25px; }
+  .two-questions > div { padding-bottom: 21px; }
+  .two-questions p { line-height: 1.56; }
+  .last-question { padding-block: 60px 43px; }
+  .last-question h3 { font-size: clamp(2.12rem, 8.7vw, 3.65rem); line-height: 1.07; letter-spacing: -.052em; }
+  .last-question p { max-width: 37ch; }
+  .footer { padding-block: 16px; min-height: 80px; gap: 10px; }
+  .footer > a { font-size: .77rem; }
+}
+@media (max-width: 410px) {
+  .atlas-actions { flex-wrap: nowrap; align-items: flex-end; }
+  .observer span { flex-basis: 100%; }
+}
+@media (max-width: 370px) {
+  .stock { font-size: .58rem; padding-left: 6px; }
+  .hero { padding-top: 26px; }
+  .hero-figure figcaption { font-size: .58rem; }
+  .universe-title { gap: 11px; }
+  .universe-title .year { font-size: 3.15rem; }
+  .universe-title h2 { font-size: 1.68rem; }
+  .range-title { font-size: .85rem; }
+  .two-questions { grid-template-columns: 1fr; }
+  .two-questions > div + div { border: 0; border-top: 1px solid var(--line); padding-left: 0; padding-top: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+/* Fotografia autêntica de 1933: dois cientistas em destaque, sem confundir com 1923. */
+.historical-portrait { max-width: 320px; border-color: var(--line); }
+.historical-photo-link { display: block; overflow: hidden; background: #dad3c7; }
+.historical-photo { display: block; width: 100%; aspect-ratio: 19 / 20; height: auto;  }
+.historical-portrait figcaption { max-width: 36ch; padding-block: 11px 5px; font-size: .73rem; line-height: 1.5; letter-spacing: 0; text-transform: none; }
+.historical-portrait figcaption strong { color: var(--ink); }
+.historical-portrait figcaption a { text-underline-offset: 2px; }
+@media (max-width: 740px) { .historical-portrait { width: min(100%, 308px); margin-inline: 0; } .historical-photo { aspect-ratio: 19 / 20; } }
+
+/* Semente 001 — adaptação tipográfica do texto editorial aprovado. */
+.hero-deck { max-width: 41ch; margin-top: 15px; color: var(--soft); font-size: clamp(.95rem, 1.45vw, 1.14rem); line-height: 1.55; }
+.universe-head > p:not(.kicker) { max-width: 62ch; }
+.universe-head > p + p { margin-top: 1em; }
+.universe .interactive-cue { margin-top: 22px !important; padding-left: 16px; border-left: 2px solid #d5c3a0; color: var(--starlight); }
+.archive-head h2 { max-width: 18ch; font-size: clamp(2.5rem, 5.6vw, 4.4rem); line-height: 1.04; }
+.archive-head > p { max-width: 61ch; }
+.archive-head > p:not(.kicker) { margin-top: 1em; }
+.archive-head .document-question { font-size: clamp(1.16rem, 2.1vw, 1.36rem); line-height: 1.45; margin-top: 1.2em; }
+.archive-head .document-instruction { margin-top: 1.4em; color: #554b3e; font-size: .94rem; line-height: 1.55; }
+.archival-source { padding-block: 12px 18px; }
+.archival-source summary { font-size: 1rem; font-weight: 750; border-bottom: 1px solid #a99e89; }
+.archival-source summary span { float: right; }
+.archival-source > p { margin-top: 14px; }
+.archive-source-link { display: inline-flex; min-height: 44px; align-items: center; font: 700 .87rem/1.4 var(--sans); text-decoration: underline; }
+.archival-source iframe { display: block; width: 100%; height: min(68vh, 550px); margin-top: 16px; border: 1px solid var(--line); background: #f8f0df; }
+.archival-source .source-note { font-size: .8rem; }
+.reflection > p:not(.kicker) { max-width: 67ch; }
+.reflection .philosophy-surprise { border-left: 3px solid var(--ink); padding-left: 17px; font-size: clamp(1.17rem,2.5vw,1.46rem); line-height: 1.42; margin-block: 23px; }
+.last-question .final-invitation { font: 700 .92rem/1.4 var(--sans); letter-spacing: .04em; }
+.last-question h3 + p { margin-top: 12px; }
+.last-question .semeador-closing { border-top: 1px solid var(--line); padding-top: 22px; font-style: italic; color: var(--soft); }
+@media (max-width: 740px) {
+  .hero-deck { font-size: clamp(.96rem, 4.0vw, 1.12rem); line-height: 1.5; margin-top: 14px; max-width: 39ch; }
+  .profile { gap: 23px; }
+  .profile h2 { font-size: clamp(2rem, 8vw, 3.4rem); line-height: 1.055; }
+  .universe-head > p:not(.kicker) { font-size: 1.035rem; line-height: 1.58; }
+  .universe .interactive-cue { margin-top: 20px !important; font-size: .97rem; }
+  .archive-head h2 { font-size: clamp(2.1rem, 8.3vw, 3.45rem); max-width: 16ch; overflow-wrap: normal; }
+  .archive-head > p { font-size: 1.04rem; line-height: 1.58; }
+  .archive-head .document-question { font-size: 1.16rem; }
+  .archive-head .document-instruction { font-size: .91rem; }
+  .archival-source iframe { height: min(58svh, 460px); }
+  .reflection > p { line-height: 1.6; }
+  .last-question > p { max-width: 50ch; }
+  .last-question .final-invitation { font-size: .88rem; }
+}
+
+.archival-source iframe[hidden] { display: none; }
+
+/* Semente 001 — fac-símile verdadeiro em primeiro plano (sem folha falsa ou iframe). */
+.authentic-manuscript { margin: clamp(27px, 6vw, 45px) auto 0; max-width: 800px; }
+.manuscript-image-link { display: block; background: #fff; border: 1px solid #aba295; padding: clamp(7px, 1.6vw, 13px); }
+.manuscript-image-link:focus-visible { outline: 3px solid #171611; outline-offset: 4px; }
+.manuscript-image-link img { display: block; width: 100%; height: auto; background: #fff; }
+.authentic-manuscript figcaption { max-width: 72ch; margin-top: 13px; color: #4e473b; font-size: .94rem; line-height: 1.58; letter-spacing: 0; text-transform: none; }
+.authentic-manuscript figcaption a { color: #211d17; font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.manuscript-explanation { max-width: 750px; margin: clamp(24px, 5.5vw, 39px) auto 0; padding: 20px 0; border-top: 1px solid #aca18b; border-bottom: 1px solid #aca18b; }
+.manuscript-explanation .kicker { margin-bottom: 10px; }
+.manuscript-explanation blockquote { font: italic clamp(1.5rem, 3.3vw, 2.1rem)/1.2 Georgia, serif; color: #252019; margin: 0 0 13px; }
+.manuscript-explanation p { margin: 12px 0 0; font-size: 1.025rem; line-height: 1.58; }
+.manuscript-explanation a, .manuscript-credit a { text-underline-offset: 3px; }
+.manuscript-credit { max-width: 75ch; margin: 16px auto 0; color: #51483a; font-size: .78rem; line-height: 1.5; }
+.archive-note { max-width: 750px; margin: 27px auto 0; }
+@media (max-width: 740px) {
+  .authentic-manuscript { margin-top: 26px; }
+  .manuscript-image-link { padding: 5px; }
+  .authentic-manuscript figcaption { font-size: .89rem; line-height: 1.52; }
+  .manuscript-explanation { margin-top: 25px; padding: 16px 0 19px; }
+  .manuscript-explanation blockquote { font-size: clamp(1.36rem, 5.8vw, 1.8rem); }
+  .manuscript-explanation p { font-size: 1rem; line-height: 1.55; }
+  .manuscript-credit { font-size: .76rem; margin-top: 15px; }
+}
