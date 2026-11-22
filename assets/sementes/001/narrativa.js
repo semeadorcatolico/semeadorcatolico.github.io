@@ -4,7 +4,7 @@
   const root = document.documentElement;
   const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const motionToggle = document.getElementById("motion-toggle");
-  let quiet = false;
+  let quiet = true;
 
   function updateMotion() {
     const reduced = quiet || motion.matches;
