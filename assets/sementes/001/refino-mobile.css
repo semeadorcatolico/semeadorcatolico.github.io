@@ -156,3 +156,27 @@ h1, h2, h3 { text-wrap: balance; }
 }
 
 .archival-source iframe[hidden] { display: none; }
+
+/* Semente 001 — fac-símile verdadeiro em primeiro plano (sem folha falsa ou iframe). */
+.authentic-manuscript { margin: clamp(27px, 6vw, 45px) auto 0; max-width: 800px; }
+.manuscript-image-link { display: block; background: #fff; border: 1px solid #aba295; padding: clamp(7px, 1.6vw, 13px); }
+.manuscript-image-link:focus-visible { outline: 3px solid #171611; outline-offset: 4px; }
+.manuscript-image-link img { display: block; width: 100%; height: auto; aspect-ratio: 1000 / 981; object-fit: contain; background: #fff; }
+.authentic-manuscript figcaption { max-width: 72ch; margin-top: 13px; color: #4e473b; font-size: .94rem; line-height: 1.58; letter-spacing: 0; text-transform: none; }
+.authentic-manuscript figcaption a { color: #211d17; font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.manuscript-explanation { max-width: 750px; margin: clamp(24px, 5.5vw, 39px) auto 0; padding: 20px 0; border-top: 1px solid #aca18b; border-bottom: 1px solid #aca18b; }
+.manuscript-explanation .kicker { margin-bottom: 10px; }
+.manuscript-explanation blockquote { font: italic clamp(1.5rem, 3.3vw, 2.1rem)/1.2 Georgia, serif; color: #252019; margin: 0 0 13px; }
+.manuscript-explanation p { margin: 12px 0 0; font-size: 1.025rem; line-height: 1.58; }
+.manuscript-explanation a, .manuscript-credit a { text-underline-offset: 3px; }
+.manuscript-credit { max-width: 75ch; margin: 16px auto 0; color: #51483a; font-size: .78rem; line-height: 1.5; }
+.archive-note { max-width: 750px; margin: 27px auto 0; }
+@media (max-width: 740px) {
+  .authentic-manuscript { margin-top: 26px; }
+  .manuscript-image-link { padding: 5px; }
+  .authentic-manuscript figcaption { font-size: .89rem; line-height: 1.52; }
+  .manuscript-explanation { margin-top: 25px; padding: 16px 0 19px; }
+  .manuscript-explanation blockquote { font-size: clamp(1.36rem, 5.8vw, 1.8rem); }
+  .manuscript-explanation p { font-size: 1rem; line-height: 1.55; }
+  .manuscript-credit { font-size: .76rem; margin-top: 15px; }
+}
