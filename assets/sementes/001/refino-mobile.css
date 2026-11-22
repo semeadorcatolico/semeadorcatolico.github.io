@@ -112,8 +112,8 @@ h1, h2, h3 { text-wrap: balance; }
 /* Fotografia autêntica de 1933: dois cientistas em destaque, sem confundir com 1923. */
 .historical-portrait { max-width: 320px; border-color: var(--line); }
 .historical-photo-link { display: block; overflow: hidden; background: #dad3c7; }
-.historical-photo { display: block; width: 100%; aspect-ratio: 4 / 5; height: auto; object-fit: cover; object-position: right center; filter: grayscale(1); }
+.historical-photo { display: block; width: 100%; aspect-ratio: 19 / 20; height: auto; object-fit: cover; object-position: right center; filter: grayscale(1); }
 .historical-portrait figcaption { max-width: 36ch; padding-block: 11px 5px; font-size: .73rem; line-height: 1.5; letter-spacing: 0; text-transform: none; }
 .historical-portrait figcaption strong { color: var(--ink); }
 .historical-portrait figcaption a { text-underline-offset: 2px; }
-@media (max-width: 740px) { .historical-portrait { width: min(100%, 308px); margin-inline: 0; } .historical-photo { aspect-ratio: 4 / 5; } }
+@media (max-width: 740px) { .historical-portrait { width: min(100%, 308px); margin-inline: 0; } .historical-photo { aspect-ratio: 19 / 20; } }
