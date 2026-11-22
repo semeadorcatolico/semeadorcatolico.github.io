@@ -5,7 +5,6 @@
 :root { --paper: #f5efe2; --ink: #191711; --soft: #554f44; }
 body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
 .hero-art { image-rendering: auto; }
-.plate-link { cursor: default; }
 .ink-dive { display: none !important; }
 .motion { display: none !important; }
 .hero-art, .plate-layers, .plate-part, .pen-trace { transition: none !important; }
@@ -54,6 +53,7 @@ h1, h2, h3 { text-wrap: balance; }
   .atlas-top span { font-size: .58rem; }
   .sky { margin-inline: -3px; }
   .map { max-height: min(46svh, 370px); }
+  .node text { font-size: 17px; }
   .atlas-controls { padding-top: 16px; }
   .range-title { font-size: .92rem; }
   .range-caption { font-size: .65rem; }
@@ -90,6 +90,10 @@ h1, h2, h3 { text-wrap: balance; }
   .footer { padding-block: 16px; min-height: 80px; gap: 10px; }
   .footer > a { font-size: .77rem; }
 }
+@media (max-width: 410px) {
+  .atlas-actions { flex-wrap: nowrap; align-items: flex-end; }
+  .observer span { flex-basis: 100%; }
+}
 @media (max-width: 370px) {
   .stock { font-size: .58rem; padding-left: 6px; }
   .hero { padding-top: 26px; }
@@ -98,7 +102,6 @@ h1, h2, h3 { text-wrap: balance; }
   .universe-title .year { font-size: 3.15rem; }
   .universe-title h2 { font-size: 1.68rem; }
   .range-title { font-size: .85rem; }
-  .atlas-top span { max-width: 9ch; }
   .two-questions { grid-template-columns: 1fr; }
   .two-questions > div + div { border: 0; border-top: 1px solid var(--line); padding-left: 0; padding-top: 20px; }
 }
