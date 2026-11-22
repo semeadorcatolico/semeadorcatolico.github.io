@@ -236,6 +236,15 @@
   }
   documentButtons.forEach((button) => button.addEventListener("click", () => showDocument(button.dataset.document)));
 
+  const archivalSource = document.querySelector(".archival-source");
+  const archiveFrame = archivalSource?.querySelector("iframe[data-src]");
+  archiveFrame?.parentElement.addEventListener("toggle", () => {
+    if (archivalSource.open && !archiveFrame.hasAttribute("src")) {
+      archiveFrame.src = archiveFrame.dataset.src;
+      archiveFrame.hidden = false;
+    }
+  });
+
   const conclusion = document.querySelector(".last-question");
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver((entries) => {
