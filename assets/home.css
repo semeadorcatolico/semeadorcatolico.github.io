@@ -37,6 +37,10 @@ h3 { margin: 0 0 19px; font: 700 .83rem/1.35 "Courier New",monospace; letter-spa
 .about p { margin: 0 0 20px; max-width: 58ch; }
 .about .announcement { font-weight: 700; margin-bottom: 0; }
 .footer { border-top: 1px solid var(--line); padding-block: 22px 40px; font: 700 .71rem/1.4 "Courier New",monospace; letter-spacing: .07em; text-transform: uppercase; }
+/* Apenas desktop: título da capa mais contido; versão móvel permanece intacta. */
+@media (min-width: 761px) {
+  .intro h1 { font-size: clamp(3.7rem, 7.2vw, 6.25rem); }
+}
 @media (max-width: 760px) {
   .container { width: min(100% - 40px, 640px); }
   .masthead { min-height: 73px; }
